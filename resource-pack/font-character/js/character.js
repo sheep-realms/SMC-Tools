@@ -24,7 +24,7 @@ $('#frm-chr').on("submit", function(event){
     $('#output').focus();
     $('#output').select();
     msgClose();
-    $('#weburl').text(window.location.pathname + "?value=" + $('#value').val());
+    $('#weburl').text(window.location.origin + window.location.pathname + "?value=" + $('#value').val());
 });
 
 $('#value').focus(function() {
