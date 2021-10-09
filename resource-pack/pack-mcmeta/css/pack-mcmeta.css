@@ -1,0 +1,63 @@
+#frm-pkm input[type="text"],
+.input-type-json {
+    width: calc(100% - 30px);
+}
+
+select {
+    width: calc(100% - 20px);
+}
+
+textarea {
+    min-height: 500px;
+}
+
+@media screen and (max-width: 800px) {
+    .fh-flex-row {
+        flex-direction: column;
+    }
+
+    .fh-col-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    #frm-pkm input[type="text"] {
+        width: calc(100% - 10px);
+    }
+    
+    select {
+        width: calc(100%);
+    }
+    
+    textarea {
+        min-height: 400px;
+    }
+}
+
+input.hide,
+select.hide,
+.input-type-json.hide {
+    display: none;
+}
+
+#lang-list {
+    margin-left: 2em;
+}
+
+.flex-layout-input-button {
+    display: flex;
+}
+
+.flex-layout-input-button input[type="text"] {
+    width: calc(100% - 120px)!important;
+    margin-right: 10px;
+}
+
+.flex-layout-input-button input[type="button"] {
+    min-width: 80px;
+    flex: 0 0 80px;
+}
+
+#language-more-add.hide {
+    display: none;
+}

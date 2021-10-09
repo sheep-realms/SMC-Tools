@@ -1,0 +1,26 @@
+textarea {
+    min-height: 400px;
+    font-size: 16px;
+}
+
+#value {
+    width: 100px;
+    text-align: center;
+    margin: 0 5px;
+}
+
+#start {
+    margin-left: 15px;
+}
+
+@media screen and (max-width: 800px) {
+    #frm-chr {
+        text-align: center;
+    }
+
+    #start {
+        margin-top: 15px;
+        margin-left: 0;
+        width: calc(100% - 25px);
+    }
+}

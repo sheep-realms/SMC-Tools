@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>pack.mcmeta - SMC工具箱</title>
+    <script src="../../common/js/jquery-1.7.2.min.js"></script>
+    <link rel="stylesheet" href="../../common/css/common.css">
+    <link rel="stylesheet" href="css/pack-mcmeta.css">
+</head>
+<body>
+    <div id="nav">
+        <div class="page">
+            <h1>pack.mcmeta</h1>
+        </div>
+    </div>
+    <div id="menu" class="hide"></div>
+    <div id="msgbox" class="hide">
+        <div class="page">
+            <div class="content">MESSAGE</div>
+            <div class="close"><span>关闭</span></div>
+        </div>
+    </div>
+    <div id="navbar">
+        <div class="page">
+            <p><a href="../../index.html">首页</a> › <a href="../../index.html#resource-pack">资源包工具</a></p>
+        </div>
+    </div>
+    <div id="content">
+        <div class="page">
+            <div class="fh-flex-row">
+                <div class="fh-col-12">
+                    <form id="frm-pkm" class="frm-tls" action="" autocomplete="off">
+                        <p>描述<code id="help-description" class="tips">description</code> <a href="javascript:;" id="description-mode" title="暂不可用" style="cursor: not-allowed;">切换输入模式</a></p>
+                        <p>
+                            <input type="text" name="" id="description" class="landing-focus" placeholder="纯文本...">
+                            <div class="input-type-json hide">
+                                <span>JSON文本...</span>
+                                <input type="hidden" name="" id="description-json" placeholder="原始JSON文本...">
+                            </div>
+                        </p>
+                        <p>版本<code id="help-pack-format" class="tips">pack_format</code> <a href="javascript:;" id="pack-format-mode">切换输入模式</a></p>
+                        <p>
+                            <select id="pack-format-sel" class="">
+                                <option value="7">1.17（20w45a及以上）</option>
+                                <option value="6">1.16.2（1.16.2-rc1） – 1.16.5</option>
+                                <option value="5">1.15（1.15-pre1） – 1.16.1（1.16.2-pre3）</option>
+                                <option value="4">1.13（17w48a） – 1.14.4（19w46b）</option>
+                                <option value="3">1.11（16w32a） – 1.12.2（17w47b）</option>
+                                <option value="2">1.9（15w31a） – 1.10.2</option>
+                                <option value="1">1.6.1（13w24a） – 1.8.9</option>
+                            </select>
+                            <input class="hide" type="text" name="" id="pack-format" placeholder="版本号...">
+                        </p>
+                        <p>语言<code id="help-language" class="tips">language</code> <a href="javascript:;" class="language-add">添加语言</a></p>
+                        <ol id="lang-list">
+                            
+                        </ol>
+                        <p id="language-more-add" class="hide"><a href="javascript:;" class="language-add">继续添加...</a></p>
+                        <p><input type="submit" class="default" value="生   成"></p>
+                    </form>
+                </div>
+                <div class="fh-col-12 copy-tips-tr">
+                    <textarea class="code" id="output" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+
+            <ol style="display: none;">
+                <li id="tamplate-lang" class="lang auto">
+                    <p class="flex-layout-input-button">
+                        <input type="text" class="lang-code" placeholder="语言代码...">
+                        <input type="button" class="danger lang-remove" value="移   除" onclick="removeLang($(this).parents('li.lang').attr('id'))">
+                    </p>
+                    <p>语言名称<code>name</code></p>
+                    <p><input type="text" class="lang-name" placeholder="语言的完整名称..."></p>
+                    <p>国家或地区名称<code>region</code></p>
+                    <p><input type="text" class="lang-region" placeholder="国家或地区名称..."></p>
+                    <p>从右向左书写<code>bidirectional</code></p>
+                    <p><select class="lang-bidirectional">
+                        <option value="0">false - 否</option>
+                        <option value="1">true - 是</option>
+                    </select></p>
+                </li>
+            </ol>
+
+            <div class="fh-article">
+                <p>pack.mcmeta 是 Minecraft 资源包里的JSON格式的自述文件，用于描述资源包的信息。该文件需要放置在资源包目录的最顶层，一般还会附带名为<code>pack.png</code>的资源包封面。</p>
+                <p>您可以阅读 <a href="https://minecraft.fandom.com/zh/wiki/资源包">Minecraft Wiki 上的资源包条目</a> 获取更多信息。关于语言代码的相关知识，请参考：</p>
+                <ul>
+                    <li><a href="https://minecraft.fandom.com/zh/wiki/语言">语言 - Minecraft Wiki</a></li>
+                    <li><a href="https://zh.wikipedia.org/wiki/ISO_639-1代码表">ISO 639-1代码表 - 维基百科</a></li>
+                    <li><a href="https://zh.wikipedia.org/wiki/國家地區代碼">国家地区代码 - 维基百科</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="page">
+            <p>
+                <a href="../../index.html">SMC工具箱</a> © 2021 <a href="https://github.com/sheep-realms" target="_blank">Sheep-realms</a> | 
+                <a href="https://github.com/sheep-realms/SMC-Tools" target="_blank">GitHub</a> | 
+                <a href="#top">回顶部</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="notepad" class="hide"><textarea id="notepad-text" disabled="true"></textarea></div>
+
+    <script src="../../common/js/common.js"></script>
+    <script src="../../common/js/lang/lang-list.js"></script>
+    <script src="../../common/js/menu.js"></script>
+    <script src="../../common/js/verif.js"></script>
+    <script src="js/pack-mcmeta.js"></script>
+    <script>
+        loadMenu("../../");
+        // loadShareLink();
+        // $('#weburl').text(window.location.pathname);
+
+        // let pValue = getUrlParam("value");
+        // if (pValue != undefined) {
+        //     $('#value').val(pValue);
+        //     $('#frm-chr').submit();
+        // }
+    </script>
+</body>
+</html>

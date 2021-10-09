@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>关于 - SMC工具箱</title>
+    <script src="../../common/js/jquery-1.7.2.min.js"></script>
+    <link rel="stylesheet" href="../../common/css/common.css">
+</head>
+<body>
+    <div id="nav">
+        <div class="page">
+            <h1>关于 SMC工具箱</h1>
+        </div>
+    </div>
+    <div id="menu" class="hide"></div>
+    <div id="msgbox" class="hide">
+        <div class="page">
+            <div class="content">MESSAGE</div>
+            <div class="close"><span>关闭</span></div>
+        </div>
+    </div>
+    <div id="navbar">
+        <div class="page">
+            <p><a href="../../index.html">首页</a> › <a href="../../index.html#misc">杂项</a></p>
+        </div>
+    </div>
+    <div id="content">
+        <div class="page">
+            <div class="fh-article">
+                <p>版权所有 © 2021 <a href="https://github.com/sheep-realms">Sheep-realms</a></p>
+                <p>SMC工具箱 是一款围绕 Minecraft 开发的网页小工具组。本软件为纯前端网页，可离线使用，您可以打包下载我们在 GitHub 上的代码以便离线使用。</p>
+
+                <h2>授权协议与声明</h2>
+                <p>SMC工具箱 是自由软件，您可以依据自由软件基金会发行的 <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html" target="_blank">GPL（GNU General Public License，GNU通用公共许可协议）第2版</a> 或任意后续版本的条款，传播和/或修改本软件。您传播和/或修改本软件即视为您已阅读 GPL 协议并无条件同意。</p>
+                <p>SMC工具箱 发表时预期有用，但对此无任何保证；亦无隐含的可以销售或适合特定目的的保证。详情请见GNU公众授权协议。</p>
+                <p>SMC工具箱 包含有网络文献，我们会在相应页面进行额外的授权协议声明。</p>
+                <p>您在使用本软件时所生产的内容（包括但不限于文字、图像、媒体、文件，不包括软件本身）版权由您自己享有。</p>
+                <p>“Minecraft” 以及 “我的世界” 为 Mojang Studios 的商标，本软件与 Mojang 以及微软公司没有从属关系。本软件可能会不可避免地使用到 Minecraft 中的游戏资源，您在使用相关资源时应当遵守 <a href="https://account.mojang.com/documents/minecraft_eula">Minecraft EULA</a> 协议。</p>
+                <p>本软件无自动保存功能，您应当及时在本地保存您的工作。</p>
+                <p>软件中若有危险操作（包括但不限于可能导致您的设备卡顿、浏览器崩溃的操作）会使用警告色等醒目警告标识告知您，且不会通过任何分享链接自动执行，请您考虑自己的设备性能谨慎进行危险操作。</p>
+
+                <h2>调试信息</h2>
+                <h3>用户浏览器</h3>
+                <div class="fh-flex-row">
+                    <div class="fh-col-4"><p>UserAgent:</p></div>
+                    <div class="fh-col-20"><p><span id="user-agent">null</span></p></div>
+                </div>
+                <div class="fh-flex-row">
+                    <div class="fh-col-4"><p>AppCodeName:</p></div>
+                    <div class="fh-col-20"><p><span id="app-code-name">null</span></p></div>
+                </div>
+                <div class="fh-flex-row">
+                    <div class="fh-col-4"><p>AppName:</p></div>
+                    <div class="fh-col-20"><p><span id="app-name">null</span></p></div>
+                </div>
+                <div class="fh-flex-row">
+                    <div class="fh-col-4"><p>AppVersion:</p></div>
+                    <div class="fh-col-20"><p><span id="app-version">null</span></p></div>
+                </div>
+                <div class="fh-flex-row">
+                    <div class="fh-col-4"><p>CookieEnabled:</p></div>
+                    <div class="fh-col-20"><p><span id="cookie-enabled">null</span></p></div>
+                </div>
+
+                <h3>用户系统</h3>
+                <div class="fh-flex-row">
+                    <div class="fh-col-4"><p>Platform:</p></div>
+                    <div class="fh-col-20"><p><span id="platform">null</span></p></div>
+                </div>
+                <div class="fh-flex-row">
+                    <div class="fh-col-4"><p>Language:</p></div>
+                    <div class="fh-col-20"><p><span id="d-language">null</span></p></div>
+                </div>
+                <div class="fh-flex-row">
+                    <div class="fh-col-4"><p>OnLine:</p></div>
+                    <div class="fh-col-20"><p><span id="online">null</span></p></div>
+                </div>
+
+                <h3>用户系统时间</h3>
+                <div class="fh-flex-row">
+                    <div class="fh-col-4"><p>Date():</p></div>
+                    <div class="fh-col-20"><p><span id="now">null</span></p></div>
+                </div>
+                <div class="fh-flex-row">
+                    <div class="fh-col-4"><p>Date.now():</p></div>
+                    <div class="fh-col-20"><p><span id="time-stamp">null</span></p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="page">
+            <p>
+                <a href="../../index.html">SMC工具箱</a> © 2021 <a href="https://github.com/sheep-realms" target="_blank">Sheep-realms</a> | 
+                <a href="https://github.com/sheep-realms/SMC-Tools" target="_blank">GitHub</a> | 
+                <a href="#top">回顶部</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="notepad" class="hide"><textarea id="notepad-text" disabled="true"></textarea></div>
+
+    <script src="../../common/js/common.js"></script>
+    <script src="../../common/js/menu.js"></script>
+    <script>
+        loadMenu("../../");
+
+        $('#user-agent').text(navigator.userAgent);
+        $('#app-name').text(navigator.appName);
+        $('#app-version').text(navigator.appVersion);
+        $('#app-code-name').text(navigator.appCodeName);
+        $('#cookie-enabled').text(navigator.cookieEnabled);
+
+        if (navigator.language) {
+            $('#d-language').text(navigator.language);
+        } else if (navigator.systemLanguage) {
+            $('#d-language').text(navigator.systemLanguage);
+        } else if (navigator.browserLanguage) {
+            $('#d-language').text(navigator.browserLanguage);
+        } else {
+            $('#d-language').text("undefined");
+        }
+
+        $('#platform').text(navigator.platform);
+        $('#online').text(navigator.onLine);
+        
+        $('#now').text(Date());
+        $('#time-stamp').text(Date.now());
+    </script>
+</body>
+</html>

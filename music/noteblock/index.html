@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>音符盒音效命令生成器 - SMC工具箱</title>
+    <script src="../../common/js/jquery-1.7.2.min.js"></script>
+    <link rel="stylesheet" href="../../common/css/common.css">
+    <link rel="stylesheet" href="../css/piano.css">
+    <link rel="stylesheet" href="css/noteblock.css">
+</head>
+<body>
+    <div id="nav">
+        <div class="page">
+            <h1>音符盒音效命令生成器</h1>
+        </div>
+    </div>
+    <div id="menu" class="hide"></div>
+    <div id="msgbox" class="hide">
+        <div class="page">
+            <div class="content">MESSAGE</div>
+            <div class="close"><span>关闭</span></div>
+        </div>
+    </div>
+    <div id="navbar">
+        <div class="page">
+            <p><a href="../../index.html">首页</a> › <a href="../../index.html#music">音乐创作工具</a></p>
+        </div>
+    </div>
+    <div id="content">
+        <div class="page">
+            <div class="fh-flex-row">
+                <div class="fh-col-12">
+                    <form id="frm-ntb" class="frm-tls" action="" autocomplete="off">
+                        <p>游戏版本</p>
+                        <p>
+                            <select id="version">
+                                <option value="je114">Java版 1.14（19w09a）及以上</option>
+                                <option value="je113">Java版 1.13（17w47a） - 1.14（19w08b）</option>
+                                <option value="je112">Java版 1.12（17w16a） - 1.13（17w46a）</option>
+                                <option value="je19">Java版 1.9（16w02a） - 1.12（17w15a）</option>
+                                <option value="je161">Java版 1.6.1 - 1.9（15w51b）</option>
+                                <option value="be1130">基岩版 1.13.0.9 及以上</option>
+                            </select>
+                        </p>
+                        <p>音高（计算结果：<span id="pitch-test">0.5</span>）</p>
+                        <p><input type="text" id="pitch" value="0"></p>
+                        <p>音色</p>
+                        <p>
+                            <select id="note-type">
+                                <option value="harp">竖琴/钢琴</option>
+                                <option value="bass">贝斯 - 木质</option>
+                                <option value="snare">小军鼓 - 沙子</option>
+                                <option value="hat">击鼓沿 - 玻璃</option>
+                                <option value="basedrum">底鼓 - 石质</option>
+                                <option value="bell" class="on-je112">铃铛（钟琴） - 金块</option>
+                                <option value="flute" class="on-je112">长笛 - 黏土块</option>
+                                <option value="chime" class="on-je112">管钟 - 浮冰</option>
+                                <option value="guitar" class="on-je112">吉他 - 羊毛</option>
+                                <option value="xylophone" class="on-je112">木琴 - 骨块</option>
+                                <option value="iron_xylophone" class="on-je114">“铁木琴”（颤音琴） - 铁块</option>
+                                <option value="cow_bell" class="on-je114">牛铃 - 灵魂沙</option>
+                                <option value="didgeridoo" class="on-je114">迪吉里杜管 - 南瓜</option>
+                                <option value="bit" class="on-je114">“芯片”（方波） - 绿宝石块</option>
+                                <option value="banjo" class="on-je114">班卓琴 - 干草块</option>
+                                <option value="pling" class="on-je114">“扣弦”（电钢琴） - 荧石</option>
+                            </select>
+                        </p>
+                        <p><input type="submit" class="default" value="生   成"></p>
+                    </form>
+                </div>
+                <div class="fh-col-12">
+                    <div id="noteblock-icon-background">
+                        <img src="../img/background/harp.png" alt="竖琴/钢琴" class="harp">
+                        <img src="../img/background/bass.png" alt="贝斯" class="bass hide">
+                        <img src="../img/background/snare.png" alt="小军鼓" class="snare hide">
+                        <img src="../img/background/hat.png" alt="击鼓沿" class="hat hide">
+                        <img src="../img/background/basedrum.png" alt="底鼓" class="basedrum hide">
+                        <img src="../img/background/bell.png" alt="铃铛（钟琴）" class="bell hide">
+                        <img src="../img/background/flute.png" alt="长笛" class="flute hide">
+                        <img src="../img/background/chime.png" alt="管钟" class="chime hide">
+                        <img src="../img/background/guitar.png" alt="吉他" class="guitar hide">
+                        <img src="../img/background/xylophone.png" alt="木琴" class="xylophone hide">
+                        <img src="../img/background/iron_xylophone.png" alt="“铁木琴”（颤音琴）" class="iron_xylophone hide">
+                        <img src="../img/background/cow_bell.png" alt="牛铃" class="cow_bell hide">
+                        <img src="../img/background/didgeridoo.png" alt="迪吉里杜管" class="didgeridoo hide">
+                        <img src="../img/background/bit.png" alt="“芯片”（方波）" class="bit hide">
+                        <img src="../img/background/banjo.png" alt="班卓琴" class="banjo hide">
+                        <img src="../img/background/pling.png" alt="“扣弦”（电钢琴）" class="pling hide">
+                    </div>
+                    <div id="noteblock-info">
+                        <p class="harp"><b>钢琴（Piano）</b>是西洋古典音乐中的一种键盘乐器，前身为古钢琴，普遍用于独奏、重奏、伴奏等演出，用于作曲和排练音乐十分方便。弹奏者通过按下键盘上的琴键，牵动钢琴里面包着绒毡的小木槌，继而敲击钢丝弦发出声音。钢琴音域宽广，音色宏亮、清脆，富于变化，表现力很强。独奏时，可演奏各种气势磅礡、宽广、抒情的音乐，亦可演奏欢快、灵巧、技巧性很高的华彩乐段，在乐队中则可发挥巨大的作用，还经常作为伴奏乐器使用。钢琴因其丰富的乐理表达能力，被称作 “乐器之王”。<a class="more" href="https://zh.wikipedia.org/wiki/钢琴" target="_blaknk">阅读更多...</a></p>
+                        <p class="bass hide"><b>电贝斯（Bass Guitar）</b>简称贝斯，又称低音电吉他，是现代摇滚乐队组合的主要乐器之一。一般乐队中除了电贝斯手以外，通常至少有：一位电吉他手、一位键盘手、一位鼓手、及一位主唱。电贝斯是从低音提琴演变出来的，一般四弦电贝斯的空弦音由粗至细为E、A、D、G。<a class="more" href="https://zh.wikipedia.org/wiki/電貝斯">阅读更多...</a></p>
+                        <p class="snare hide"><b>小鼓（Snare Drum，又称小军鼓、响弦鼓）</b>是一种具有响弦（Snare）横置在鼓面的打击乐器。常出现于军乐队、管弦乐团、管乐团等，以一线谱或者低音谱记谱。<a class="more" href="https://zh.wikipedia.org/wiki/小鼓" target="_blaknk">阅读更多...</a></p>
+                        <p class="hat hide"><b>击鼓沿</b>是常见于爵士鼓的一种演奏方式，一般在军鼓上敲击鼓沿。爵士鼓的鼓沿由金属环制成，敲击鼓沿时会发出清脆的声响。为了避免鼓本身产生剧烈震动发出不必要的声响，一般会将鼓槌按在鼓面上敲击鼓沿。另外，中式堂鼓也有直接敲击鼓沿的演奏方式。顺带一提，Minecraft 中的冷色玻璃边框确实容易让人联想到具有金属光泽的鼓沿。</p>
+                        <p class="basedrum hide"><b>大鼓（Bass Drum，又称底鼓、低音鼓）</b>泛指体积较大的双皮鼓。在西洋敲击乐器中较常使用。两边鼓面原来用动物皮革制作，近年已全改用塑胶或纤维鼓面。鼓桶原本用木制作，现在和定音鼓、小鼓一样，都改用较轻的合成纤维材料制造。<a class="more" href="https://zh.wikipedia.org/wiki/大鼓" target="_blaknk">阅读更多...</a></p>
+                        <p class="bell hide"><b>钟琴（Glockenspiel）</b>，是一种有固定音高的敲击乐器。将不同音高的金属片按键盘乐器的琴键排列好，然后镶于支撑架上，并以琴棒敲打琴键发声。由于能产生不同的音高，钟琴能如一般的乐器般奏出旋律。<a class="more" href="https://zh.wikipedia.org/wiki/鐘琴" target="_blaknk">阅读更多...</a></p>
+                        <p class="flute hide"><b>长笛（Western Concert Flute）</b>是现代管弦乐和室内乐中主要的高音旋律乐器，外型是一根开有数个音孔的圆柱型长管。早期的长笛是乌木或椰木制，现代多使用金属的材质，比如普通的镍银合金到专业型的银合金，金（9K、14K、18K、24K）以及白金等，也有表演者使用特殊的玻璃长笛。传统木质长笛的音色特点是圆润、温暖、细腻，而金属长笛的音色就比较明亮宽广。不同材料的长笛完全根据演奏者的爱好选择。<a class="more" href="https://zh.wikipedia.org/wiki/长笛" target="_blaknk">阅读更多...</a></p>
+                        <p class="chime hide"><b>管钟（Tubular Bell）</b>是属于敲击乐器，由一些长短有别的钢管或铜管组成。它悬挂在一个较高的架子上，演奏者手持一根或两根木槌击奏。管钟有特别的使用限制，音域一般不要超过一个八度。排钟可用高音或低音谱表记谱，在仅使用一、两个排钟时，也可用一线记谱。<a class="more" href="https://zh.wikipedia.org/wiki/管钟" target="_blaknk">阅读更多...</a></p>
+                        <p class="guitar hide"><b>吉他（Guitar）</b>是一种弹拨乐器。通常有六条弦，形状与提琴相似。吉他在流行音乐、摇滚音乐、布鲁斯、民歌、弗拉门戈中，常被视为主要乐器；在古典音乐的领域里，吉他常以独奏或二重奏的型式演出；在室内乐和管弦乐中，吉他亦扮演着相当程度的陪衬角色。<a class="more" href="https://zh.wikipedia.org/wiki/吉他" target="_blaknk">阅读更多...</a></p>
+                        <p class="xylophone hide"><b>木琴（Xylophone）</b>是键盘敲击乐器的一种。将木制琴键置于共鸣管之上，以琴棒敲打以产生旋律。琴键排列方式类似于钢琴键盘。一般所指的木琴为高音木琴，常用于古典音乐演奏，琴键较窄，音域较高，音色清脆。常见的木琴还有马林巴，琴键从高音窄到低音宽，音域较广，音色圆润。<a class="more" href="https://zh.wikipedia.org/wiki/木琴" target="_blaknk">阅读更多...</a></p>
+                        <p class="iron_xylophone hide"><b>颤音琴（Vibraphone）</b>是打击乐器的一种。类似木琴，但琴键以金属制造。琴键下设有共鸣管，最特别之处乃在各支管顶上加装了能转动的扇叶，并且连接至琴身旁的马达。当供电及开启开关掣后，扇叶便能转动，导致共鸣管不断被开合。当敲打琴键时，声波震动空气传入共鸣管，扇页打开时便能扩音及增加回音，但扇页关闭时音波则被阻挡，能进入共鸣管的音波大幅减少，所产生的共鸣和回音也较少。最终便产生出忽响忽暗的音色，“颤音琴”的名称就是这样而来。另外，颤音琴一般都会附有踏板，令琴键不会被止音垫止震，而令发音延长。<a class="more" href="https://zh.wikipedia.org/wiki/颤音琴" target="_blaknk">阅读更多...</a></p>
+                        <p class="cow_bell hide"><b>牛铃（Cowbell）</b>是一种系在牲畜脖子上以便牧民可以通过铃声跟踪牲畜的乐器。虽然其通常被称为 “牛铃”，但是目前牛铃被广泛应用于所有牲畜。<a class="more" href="https://en.wikipedia.org/wiki/Cowbell" target="_blaknk">阅读更多（英语）...</a></p>
+                        <p class="didgeridoo hide"><b>迪吉里杜管（Didgeridoo）</b>是一种管乐器，至少在 1500 年前由澳大利亚北部的原住民开发，虽然现在已推广至世界各地，但其仍然与澳大利亚原住民音乐密切相关。<a class="more" href="https://en.wikipedia.org/wiki/Didgeridoo" target="_blaknk">阅读更多（英语）...</a></p>
+                        <p class="bit hide"><b>方波</b>是一种非正弦曲线的波形，通常会于电子和讯号处理时出现。理想方波只有 “高” 和 “低” 这两个值。<a class="more" href="https://zh.wikipedia.org/wiki/方波" target="_blaknk">阅读更多...</a></p>
+                        <p class="banjo hide"><b>班卓琴（Banjo，又称斑鸠琴或五弦琴）</b>是一种拨弦乐器。它由美国的非洲裔奴隶以几种非洲乐器为基础发展而成。它在今日往往与提琴一并用来演奏乡村音乐和蓝草音乐，偶尔亦用在摇滚乐、流行音乐与嘻哈音乐中。<a class="more" href="https://zh.wikipedia.org/wiki/班卓琴" target="_blaknk">阅读更多...</a></p>
+                        <p class="pling hide"><b>电钢琴（Electric Piano）</b>是一种具有拾音器的键盘乐器，其发声原理是使用钢琴装置碰撞钢琴弦或金属片的声音，再经由拾音器转化成电信号，输出至放大器（吉他音箱）或录音设备。<a class="more" href="https://zh.wikipedia.org/wiki/電鋼琴" target="_blaknk">阅读更多...</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="frm-tls">
+                <p>从键盘上选择音高： <a href="javascript:;" id="piano-pos-reset">重置位置</a></p>
+                <p><div id="piano" class=""></div></p>
+
+                <p>按下<code>Ctrl</code>+<code>⇧ Shift</code>+<code>K</code>打开钢琴键入模式。</p>
+
+                <p>输出结果</p>
+                <p class="copy-tips-tr"><textarea class="code" id="output" cols="30" rows="10"></textarea></p>
+            </div>
+
+            <div class="fh-article">
+                <p>本页面关于乐器知识的文字在 <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.zh" target="_blaknk">知识共享 署名-相同方式共享 3.0 许可协议</a> 之条款下提供。</p>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="page">
+            <p>
+                <a href="../../index.html">SMC工具箱</a> © 2021 <a href="https://github.com/sheep-realms" target="_blank">Sheep-realms</a> | 
+                <a href="https://github.com/sheep-realms/SMC-Tools" target="_blank">GitHub</a> | 
+                <a href="#top">回顶部</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="notepad" class="hide"><textarea id="notepad-text" disabled="true"></textarea></div>
+
+    <script src="../../common/js/common.js"></script>
+    <script src="../../common/js/menu.js"></script>
+    <script src="../../common/js/verif.js"></script>
+    <script src="../js/piano.js"></script>
+    <script src="js/noteblock.js"></script>
+    <script>
+        loadMenu("../../");
+        // loadShareLink();
+        // $('#weburl').text(window.location.pathname);
+
+        // let pValue = getUrlParam("value");
+        // if (pValue != undefined) {
+        //     $('#value').val(pValue);
+        //     $('#frm-chr').submit();
+        // }
+    </script>
+</body>
+</html>

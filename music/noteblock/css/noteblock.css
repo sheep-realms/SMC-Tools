@@ -1,0 +1,28 @@
+#frm-ntb input[type="text"] {
+    width: calc(100% - 30px);
+}
+
+#frm-ntb select {
+    width: calc(100% - 20px);
+}
+
+#noteblock-icon-background {
+    width: 160px;
+    height: 160px;
+    box-shadow: #888 0 0 5px;
+    margin: 25px auto;
+}
+
+#noteblock-icon-background img {
+    width: 160px;
+    height: 160px;
+    image-rendering: pixelated;
+}
+
+#noteblock-info .more {
+    display: inline-block;
+}
+
+img.hide, p.hide {
+    display: none;
+}

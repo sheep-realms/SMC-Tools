@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>资源包字体文本提取器 - SMC工具箱</title>
+    <script src="../../common/js/jquery-1.7.2.min.js"></script>
+    <link rel="stylesheet" href="../../common/css/common.css">
+    <link rel="stylesheet" href="css/character.css">
+</head>
+<body>
+    <div id="nav">
+        <div class="page">
+            <h1>资源包字体文本提取器</h1>
+        </div>
+    </div>
+    <div id="menu" class="hide"></div>
+    <div id="msgbox" class="hide">
+        <div class="page">
+            <div class="content">MESSAGE</div>
+            <div class="close"><span>关闭</span></div>
+        </div>
+    </div>
+    <div id="navbar">
+        <div class="page">
+            <p><a href="../../index.html">首页</a> › <a href="../../index.html#resource-pack">资源包工具</a></p>
+        </div>
+    </div>
+    <div id="content">
+        <div class="page">
+            <form id="frm-chr" class="frm-tls" action="" autocomplete="off">
+                <p>unicode_page_<input type="text" id="value" class="pin-code" value="00" maxlength="2" οnkeyup="">.png <input type="submit" id="start" class="default" value="生   成"></p>
+                <p class="no-mobile-padding copy-tips-tr"><textarea name="" id="output" class="code"></textarea></p>
+            </form>
+            <div class="fh-article">
+                <p>Minecraft 的字体材质文件位于<code>assets/&lt;命名空间&gt;/font</code>目录中，其中 Unicode 字体会以<code>unicode_page_&lt;编号&gt;.png</code>为文件名保存。</p>
+                <p>编号是一串二位的十六进制码，一个文件可存放 256（0x100） 个字符，与 Unicode 编码相对应。例如，<code>unicode_page_3f.png</code>文件包含了 Unicode 编码为 0x3F00 ~ 0x3FFF 的所有字符。</p>
+                <p>受系统语言、字库、字体、编码或特殊符号影响，部分字符不可见。</p>
+
+                <h3>这个工具可以用来做什么？</h3>
+                <p>有些地图作者会利用资源包字体制作自定义符号，庞大的中日韩字库就是一个不错的选择。替换一些生僻字作为自定义符号，不会影响到语言使用。但是麻烦的地方就是提取这些文字，一般大家都会直接通过 Unicode 字符表去列出这些文字 —— 这个工具把这个过程自动化了。</p>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="page">
+            <p>
+                <a href="../../index.html">SMC工具箱</a> © 2021 <a href="https://github.com/sheep-realms" target="_blank">Sheep-realms</a> | 
+                <a href="https://github.com/sheep-realms/SMC-Tools" target="_blank">GitHub</a> | 
+                <a href="#top">回顶部</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="notepad" class="hide"><textarea id="notepad-text" disabled="true"></textarea></div>
+
+    <script src="../../common/js/common.js"></script>
+    <script src="../../common/js/menu.js"></script>
+    <script src="../../common/js/verif.js"></script>
+    <script src="js/character.js"></script>
+    <script>
+        loadMenu("../../");
+        loadShareLink();
+        $('#weburl').text(window.location.pathname);
+
+        let pValue = getUrlParam("value");
+        if (pValue != undefined) {
+            $('#value').val(pValue);
+            $('#frm-chr').submit();
+        }
+    </script>
+</body>
+</html>

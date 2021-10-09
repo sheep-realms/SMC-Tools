@@ -1,0 +1,215 @@
+#piano {
+    height: calc(300px + 10px);
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    white-space: nowrap;
+    padding-left: 1px;
+    user-select: none;
+    margin-bottom: 25px;
+}
+
+#piano:hover {
+    height: calc(300px + 20px);
+    margin-bottom: 10px;
+}
+
+#piano:hover::-webkit-scrollbar {
+    height: 20px;
+}
+
+#piano::-webkit-scrollbar {
+    height: 10px;
+    background-color: #F1F1F1;
+}
+
+#piano::-webkit-scrollbar-thumb {
+    background-color: #C1C1C1;
+}
+
+#piano::-webkit-scrollbar-thumb:hover {
+    background-color: #A8A8A8;
+}
+
+#piano .note-white {
+    position: relative;
+    height: calc(300px - 2px);
+    width: 68px;
+    background-color: #FFF;
+    border: #000 1px solid;
+    display: inline-block;
+    margin-left: -1px;
+    cursor: pointer;
+    color: #000;
+}
+
+#piano .note-white:hover {
+    background-color: #EEE;
+}
+
+#piano .note-white:active,
+#piano .note-white.active {
+    background-image: linear-gradient(#EEE, #CCC);
+}
+
+#piano .note-black {
+    top: calc(-302px + 186px + 2px);
+    position: relative;
+    height: calc(186px - 2px);
+    width: 48px;
+    margin: 0 -25px;
+    background-color: #000;
+    border: #000 1px solid;
+    display: inline-block;
+    z-index: 1;
+    cursor: pointer;
+    color: #FFF;
+}
+
+#piano .note-black:hover {
+    background-color: #444;
+}
+
+#piano .note-black:active,
+#piano .note-black.active {
+    background-image: linear-gradient(#444, #777);
+}
+
+#piano .note-white .name {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 26px;
+    position: absolute;
+    top: 250px;
+}
+
+#piano .note-black .name {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 22px;
+    position: absolute;
+    top: 146px;
+}
+
+#piano .octave {
+    display: inline-block;
+    position: relative;
+}
+
+#piano .octave .note-key {
+    transition: filter .3s;
+}
+
+#piano:hover .octave .note-key {
+    filter: brightness(0.75);
+}
+
+#piano:hover .octave:hover .note-key {
+    filter: brightness(1);
+}
+
+#piano:hover .octave:hover+.octave .note-key {
+    filter: brightness(1);
+}
+
+#piano:hover .octave:hover+.octave> .note-key:not(.note-C) {
+    filter: brightness(0.75);
+}
+
+#piano .note-key.disabled {
+    pointer-events: none;
+    filter: brightness(0.5)!important;
+}
+
+#piano .octave .octave-name {
+    position: absolute;
+    color: #000;
+    z-index: 5;
+    top: 10px;
+    left: 10px;
+    padding: 5px 10px;;
+    background-color: #EEE;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s;
+}
+
+#piano .octave:hover .octave-name {
+    opacity: 0.8;
+}
+
+#piano .note-white .note {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 22px;
+    position: absolute;
+    top: 216px;
+    display: none;
+}
+
+#piano .note-black .note {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 22px;
+    position: absolute;
+    top: 114px;
+    display: none;
+}
+
+#piano .note-white .notekey {
+    display: none;
+    width: 100%;
+    text-align: center;
+    font-size: 22px;
+    position: absolute;
+    top: 216px;
+    display: none;
+}
+
+#piano .note-black .notekey {
+    display: none;
+    width: 100%;
+    text-align: center;
+    font-size: 22px;
+    position: absolute;
+    top: 114px;
+    display: none;
+}
+
+#piano .note-0 .note {display: inline-block; color: #57DE00;}
+#piano .note-1 .note {display: inline-block; color: #81C201;}
+#piano .note-2 .note {display: inline-block; color: #A5A400;}
+#piano .note-3 .note {display: inline-block; color: #C67D02;}
+#piano .note-4 .note {display: inline-block; color: #DA5901;}
+#piano .note-5 .note {display: inline-block; color: #EF2A04;}
+#piano .note-6 .note {display: inline-block; color: #F00804;}
+#piano .note-7 .note {display: inline-block; color: #EB002D;}
+#piano .note-8 .note {display: inline-block; color: #DB0250;}
+#piano .note-9 .note {display: inline-block; color: #C4017C;}
+#piano .note-10 .note {display: inline-block; color: #A302A6;}
+#piano .note-11 .note {display: inline-block; color: #8101C5;}
+#piano .note-12 .note {display: inline-block; color: #5500DE;}
+#piano .note-13 .note {display: inline-block; color: #2A02EC;}
+#piano .note-14 .note {display: inline-block; color: #0404F3;}
+#piano .note-15 .note {display: inline-block; color: #002AEB;}
+#piano .note-16 .note {display: inline-block; color: #0057DD;}
+#piano .note-17 .note {display: inline-block; color: #0080C6;}
+#piano .note-18 .note {display: inline-block; color: #00A5A2;}
+#piano .note-19 .note {display: inline-block; color: #02C37F;}
+#piano .note-20 .note {display: inline-block; color: #00E156;}
+#piano .note-21 .note {display: inline-block; color: #12D55C;}
+#piano .note-22 .note {display: inline-block; color: #00EE2A;}
+#piano .note-23 .note {display: inline-block; color: #07F707;}
+#piano .note-24 .note {display: inline-block; color: #2BEC00;}
+
+#piano.keyinput .notekey {
+    display: inline-block!important;
+}
+
+#piano.keyinput .note {
+    display: none!important;
+}
