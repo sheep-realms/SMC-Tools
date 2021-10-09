@@ -62,7 +62,7 @@
     <script>
         loadMenu("../../");
         loadShareLink();
-        $('#weburl').text(window.location.pathname);
+        $('#weburl').text(window.location.origin + window.location.pathname);
 
         let pValue = getUrlParam("value");
         if (pValue != undefined) {
